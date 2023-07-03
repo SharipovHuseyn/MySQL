@@ -4,7 +4,8 @@ function printResult($result){
         while($row = $result->fetch_assoc()){
             echo "<br />"."<b>ID</b>: ".$row['id'].". ";
             echo "NAME: ".$row['name'].". ";
-            echo "BIO: ".$row['bio'].". "."<br />"."<br />";
+            echo "BIO: ".$row['bio']."   ";
+            echo "<form action='' method='POST'><input type='button' name='delete' style='color:red' value='Удалить'><form>"."<br />";
         }
     }
     echo "<hr/>";
@@ -14,7 +15,9 @@ $mysql = new mysqli("localhost", "root", "", "HomeWork");
 $mysql->query("SET NAMES 'utf8'");
 $result = $mysql->query("SELECT * FROM `users`");
 printResult($result);
-
+if(isset($_POST["delete"])){
+    $mysql->query("DELETE FROM `exampleusers` WHERE `id`= '$row', `name`= '$row', `bio`='$row'");
+}
 if(isset($_POST["name"])){
     $name = $_POST["name"];
 }
