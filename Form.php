@@ -1,6 +1,19 @@
-<?php
+<?php 
+function printResult($result){
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            echo "<br />"."<b>ID</b>: ".$row['id'].". ";
+            echo "NAME: ".$row['name'].". ";
+            echo "BIO: ".$row['bio'].". "."<br />"."<br />";
+        }
+    }
+    echo "<hr/>";
+}
+
 $mysql = new mysqli("localhost", "root", "", "HomeWork");
 $mysql->query("SET NAMES 'utf8'");
+$result = $mysql->query("SELECT * FROM `users`");
+printResult($result);
 
 if(isset($_POST["name"])){
     $name = $_POST["name"];
