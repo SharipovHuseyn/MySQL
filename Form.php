@@ -6,7 +6,9 @@ function printResult($result){
             echo "NAME: ".$row['name'].". ";
             echo "BIO: ".$row['bio']."   ";
             echo "<form action='delete.php' method='POST'>
-            <input type='submit' name='delete' style='color:red' value='Удалить'><input type='hidden' name='id' value='".$row['id']."'/></form>"."<br />";   
+            <input type='submit' name='delete' style='color:red' value='Удалить'><input type='hidden' name='id' value='".$row['id']."'/></form>";   
+            echo "<form action='update.php' method='POST'>
+            <input type='submit' name='update' style='color:blue' value='Редактировать'><input type='hidden' name='update' value='".$row['id']."'/></form>"."<br />";   
         }
     }
     echo "<hr/>";
